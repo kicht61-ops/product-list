@@ -1,71 +1,23 @@
-// LOAD ALL PRODUCTS
 fetch("https://dummyjson.com/products")
-.then(res => res.json())
-.then(data => {
+  .then(res => res.json())
+  .then(data => {
 
-let html = ""
+    const products = data.products
+    const container = document.getElementById("products")
 
-data.products.forEach(p => {
+    products.forEach(product => {
 
-html += `
-<div class="product">
-<h3>${p.title}</h3>
-<img src="${p.thumbnail}" width="120">
-<p>Price: $${p.price}</p>
-</div>
-`
+      const item = document.createElement("div")
 
-})
+      item.innerHTML = `
+        <h3>${product.title}</h3>
+        <img src="${product.thumbnail}" width="150">
+        <p>Price: $${product.price}</p>
+        <hr>
+      `
 
-document.getElementById("productList").innerHTML = html
+      container.appendChild(item)
 
-})
+    })
 
-
-// LOAD CATEGORIES
-fetch("https://dummyjson.com/products/categories")
-.then(res => res.json())
-.then(data => {
-
-let html = ""
-
-data.forEach(c => {
-
-let name = typeof c === "string" ? c : c.name
-
-html += `<li onclick="loadByCategory('${name}')">${name}</li>`
-
-})
-
-document.getElementById("categoryList").innerHTML = html
-
-})
-
-
-
-// LOAD PRODUCT BY CATEGORY
-function loadByCategory(category){
-
-fetch(`https://dummyjson.com/products/category/${category}`)
-.then(res => res.json())
-.then(data => {
-
-let html = ""
-
-data.products.forEach(p => {
-
-html += `
-<div class="product">
-<h3>${p.title}</h3>
-<img src="${p.thumbnail}" width="120">
-<p>Price: $${p.price}</p>
-</div>
-`
-
-})
-
-document.getElementById("productList").innerHTML = html
-
-})
-
-}
+  })
