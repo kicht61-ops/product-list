@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Product Category</title>
+
+<style>
+
+body{
+font-family:Arial;
+}
+
+.container{
+display:flex;
+}
+
+.left{
+width:250px;
+border-right:1px solid #ccc;
+padding:10px;
+}
+
+.right{
+flex:1;
+padding:10px;
+}
+
+.product{
+border:1px solid #ccc;
+padding:10px;
+margin-bottom:10px;
+}
+
+.product img{
+margin-top:10px;
+}
+
+li{
+cursor:pointer;
+margin-bottom:5px;
+}
+
+li:hover{
+color:red;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<h1>Product List</h1>
+
+<div class="container">
+
+<div class="left">
+<h3>Categories</h3>
+<ul id="categoryList"></ul>
+</div>
+
+<div class="right">
+<div id="productList"></div>
+</div>
+
+</div>
+
+<script src="main.js"></script>
+
+</body>
+</html>
